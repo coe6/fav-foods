@@ -1,25 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Favorite Foods</title>
+    <title>Movie List</title>
     <link rel="stylesheet" href="app.css" />
 </head>
 <body>
-    <h1>Favorite Foods</h1>
-    <h3>Create a list of all your favorite foods!</h3>
+    <h1>Movie List</h1>
+    <h3>Create a list of all the movies you have watched or plan to watch!</h3>
 
-    <form id="foodInput">
+    <form id="movieInput">
         <p>
-            <label for="enterFood"></label>
-            <input name="enterFood" id="food" type="text" value="Enter your favorite food" autofocus>
+            <label for="enterMovie"></label>
+            <input name="enterMovie" id="movie" type="text" placeholder="Enter a movie title!" autofocus>
+        
+            <label for="genreType"></label>
+            <select name="genres">
+                <option value="Comedy">Comedy</option>
+                <option value="Romance">Romance</option>
+                <option value="Horror">Horror</option>
+                <option value="Thriller">Thriller</option>
+                <option value="Tragedy">Tragedy</option>
+            </select>
+
+            <select name="watch">
+                    <option value="Want to See!">Want to See!</option>
+                    <option value="Have Seen!">Have Seen!</option>
+                </select>
         </p>
 
         <button type="submit" id="button1">Sumbit!</button>
-        <input type="button" value="Refresh!" onClick="window.location.reload()">
+        <!-- <input type="button" value="Refresh!" onClick="window.location.reload()"> -->
 
     </form>
 
-    <div class="foods" id="foods"></div>
+    <div class="movies" id="movies"></div>
 
     <script src="app.js"></script>
 </body>
