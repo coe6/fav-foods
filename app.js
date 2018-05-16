@@ -1,20 +1,32 @@
 
 let movieArray = []
-let deleteArray = []
 
 function filterList(ev) {
     ev.preventDefault()
+
+    const form = ev.target
+    const movies = document.querySelector('#movies')
+
+    movies.appendChild(renderList(form))
+
+    form.reset()
+    form.movie.focus()
 }
 
 function createDeleteBttn(list) {
     const bttn = document.createElement('button')
     bttn.textContent = 'Remove'
 
+    bttn.addEventListener('click', deleteItem)
+
     list.appendChild(bttn)
 }
 
 function deleteItem(ev) {
-    
+    ev.preventDefault()
+
+    const listItem = ev.target
+    listItem.parentNode.remove()
 }
 
 function renderListItem(type, value) {
@@ -39,18 +51,15 @@ function renderList(form) {
     const movieItem = {
         'Title: ': form.movie.value,
         'Genre: ': form.genres.value,
-        'Currently: ': form.watch.value,
+        'Status: ': form.watch.value,
     }
-    const tempArray = Object.keys(movieItem).map(value => {
+    Object.keys(movieItem).map(value => {
          const item = renderListItem(value, movieItem[value])
          list.appendChild(item)
-
-        return movieItem[value]
      })
 
-     tempArray.map(value => {
-         movieArray.push(value)
-     })
+    movieArray.push(movieItem)
+    console.log(movieArray)
 
      createDeleteBttn(list)
 
