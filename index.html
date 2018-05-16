@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Favorite Foods</title>
+    <link rel="stylesheet" href="app.css" />
+</head>
+<body>
+    <h1>Favorite Foods</h1>
+    <h3>Create a list of all your favorite foods!</h3>
+
+    <form id="foodInput">
+        <p>
+            <label for="enterFood"></label>
+            <input name="enterFood" id="food" type="text" value="Enter your favorite food" autofocus>
+        </p>
+
+        <button type="submit" id="button1">Sumbit!</button>
+        <input type="button" value="Refresh!" onClick="window.location.reload()">
+
+    </form>
+
+    <div class="foods" id="foods"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
