@@ -12,9 +12,10 @@
         <p>
             <label for="enterMovie"></label>
             <input name="enterMovie" id="movie" type="text" placeholder="Enter a movie title!" autofocus>
-        
+    
             <label for="genreType"></label>
-            <select name="genres">
+            <select name="genres" required>
+                <option value="" selected disabled hidden>--Genre--</option>
                 <option value="Comedy">Comedy</option>
                 <option value="Romance">Romance</option>
                 <option value="Horror">Horror</option>
@@ -22,16 +23,32 @@
                 <option value="Tragedy">Tragedy</option>
             </select>
 
-            <select name="watch">
-                    <option value="Want to See!">Want to See!</option>
-                    <option value="Have Seen!">Have Seen!</option>
-                </select>
+            <select name="watch" required>
+                <option value="" selected disabled hidden>--Status--</option>
+                <option value="Want to See!">Want to See!</option>
+                <option value="Have Seen!">Have Seen!</option>
+            </select>
+
+            <button type="submit" class="button1" id="button1">ADD</button>
         </p>
 
-        <button type="submit" id="button1">Sumbit!</button>
         <!-- <input type="button" value="Refresh!" onClick="window.location.reload()"> -->
 
     </form>
+
+    <div class="filterBar">
+        <form class="filterMovie" id="filterMovie">
+                <select name="filter">
+                        <option value="" selected disabled hidden>--Filter Results--</option>
+                        <option value="Comedy">Comedy</option>
+                        <option value="Romance">Romance</option>
+                        <option value="Horror">Horror</option>
+                        <option value="Thriller">Thriller</option>
+                        <option value="Tragedy">Tragedy</option>
+                    </select>
+                    <button type="submit" class="button1" id="button2">FILTER</button>
+        </form>
+    </div>
 
     <div class="movies" id="movies"></div>
 
