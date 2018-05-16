@@ -26,7 +26,16 @@ function deleteItem(ev) {
     ev.preventDefault()
 
     const listItem = ev.target
+
+    for(var i = 0; i < movieArray.length; i++) {
+        if(listItem.parentNode.textContent === `Title: ${movieArray[i].Title}Genre: ${movieArray[i].Genre}Status: ${movieArray[i].Status}Remove`) {
+            movieArray.splice(i, 1)
+            break
+        }
+    }
+
     listItem.parentNode.remove()
+
 }
 
 function renderListItem(type, value) {
@@ -40,7 +49,7 @@ function renderListItem(type, value) {
     // item.appendChild(dtItem)
     // item.appendChild(description)
 
-    item.textContent = `${type} ${value}`
+    item.textContent = `${type}: ${value}`
 
     return item
 }
@@ -49,9 +58,9 @@ function renderList(form) {
     const list = document.createElement('dl')
 
     const movieItem = {
-        'Title: ': form.movie.value,
-        'Genre: ': form.genres.value,
-        'Status: ': form.watch.value,
+        'Title': form.movie.value,
+        'Genre': form.genres.value,
+        'Status': form.watch.value,
     }
     Object.keys(movieItem).map(value => {
          const item = renderListItem(value, movieItem[value])
