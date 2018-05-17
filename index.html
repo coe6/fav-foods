@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Movie List</title>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.4.3/css/foundation.min.css" /> -->
     <link rel="stylesheet" href="app.css" />
 </head>
 <body>
@@ -40,13 +41,14 @@
         <form class="filterMovie" id="filterMovie">
                 <select name="filter">
                         <option value="" selected disabled hidden>--Filter Results--</option>
+                        <option value="noFilter">--No Filter--</option>
                         <option value="Comedy">Comedy</option>
                         <option value="Romance">Romance</option>
                         <option value="Horror">Horror</option>
                         <option value="Thriller">Thriller</option>
                         <option value="Tragedy">Tragedy</option>
                     </select>
-                    <button type="submit" class="filterBttn" id="button2">=></button>
+                    <button type="button" class="filterBttn" id="button2">=></button>
         </form>
     </div>
 

@@ -4,13 +4,42 @@ let movieArray = []
 function filterList(ev) {
     ev.preventDefault()
 
-    const form = ev.target
+    const filter = filterForm.filter.value
     const movies = document.querySelector('#movies')
 
-    movies.appendChild(renderList(form))
+    while(movies.hasChildNodes()) {
+        movies.removeChild(movies.lastChild)
+    }
 
-    form.reset()
-    form.movie.focus()
+    if(filter === 'noFilter') {
+        const list = document.createElement('ul')
+
+        for(var i = 0; i < movieArray.length; i++) {
+            Object.keys(movieArray[i]).map(value => {
+                const item = renderListItem(value, movieArray[i][value])
+                list.appendChild(item)
+                })
+            createDeleteBttn(list)
+        }
+
+        movies.appendChild(list)
+        return
+    } else {
+        const list = document.createElement('ul')
+
+        for(var i = 0; i < movieArray.length; i++) {
+            if(filter === movieArray[i].Genre) {
+                Object.keys(movieArray[i]).map(value => {
+                    const item = renderListItem(value, movieArray[i][value])
+                    list.appendChild(item)
+                })
+
+                createDeleteBttn(list)
+            }
+        }
+
+        movies.appendChild(list)
+    }
 }
 
 function createDeleteBttn(list) {
@@ -33,6 +62,7 @@ function deleteItem(ev) {
             break
         }
     }
+    
 
     listItem.parentNode.remove()
 
@@ -55,24 +85,24 @@ function renderListItem(type, value) {
 }
 
 function renderList(form) {
-    const list = document.createElement('dl')
+    const list = document.createElement('ul')
 
     const movieItem = {
         'Title': form.movie.value,
         'Genre': form.genres.value,
         'Status': form.watch.value,
     }
+
     Object.keys(movieItem).map(value => {
          const item = renderListItem(value, movieItem[value])
          list.appendChild(item)
      })
 
     movieArray.push(movieItem)
-    console.log(movieArray)
 
-     createDeleteBttn(list)
+    createDeleteBttn(list)
 
-     return list;
+    return list;
 
 }
 
@@ -90,6 +120,7 @@ function handleSubmit(ev) {
 
 const form = document.querySelector('form#movieInput')
 const filterBttn = document.querySelector('#button2')
+const filterForm = document.querySelector('form#filterMovie')
 
 form.addEventListener('submit', handleSubmit)
-filterBttn.addEventListener('submit', filterBttn)
+filterBttn.addEventListener('click', filterList)
